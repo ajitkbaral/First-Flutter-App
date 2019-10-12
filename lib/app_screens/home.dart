@@ -14,12 +14,42 @@ class Home extends StatelessWidget {
             "This is the image of the food",
             style: TextStyle(fontSize: 30.0),
           ),
-          FoodBookButton()
+          FoodBookButton(),
+          Expanded(
+            child: getListView(),
+          )
         ],
       )
       
     );
   }
+}
+
+Widget getListView() {
+  return ListView(
+    children: <Widget>[
+      ListTile(
+        leading: Icon(Icons.landscape),
+        title: Text("Landscape"),
+        subtitle: Text("Beautiful View"),
+        trailing: Icon(Icons.wb_sunny),
+      ),
+      ListTile(
+        leading: Icon(Icons.landscape),
+        title: Text("Landscape"),
+        subtitle: Text("Beautiful View"),
+        trailing: Icon(Icons.wb_sunny),
+      ),
+      ListTile(
+        leading: Icon(Icons.landscape),
+        title: Text("Landscape"),
+        subtitle: Text("Beautiful View"),
+        trailing: Icon(Icons.wb_sunny),
+      ),
+      // Adding a new widget instead of ListTile
+      Text("This is the next view")
+    ],
+  );
 }
 
 class FoodImageAsset extends StatelessWidget {
