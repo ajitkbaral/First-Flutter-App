@@ -7,20 +7,47 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Text("Flutter Container"),
       ),
-      body: Column(
-        children: <Widget>[
-          FoodImageAsset(),
-          Text(
-            "This is the image of the food",
-            style: TextStyle(fontSize: 30.0),
-          ),
-          FoodBookButton(),
-          Expanded(
-            child: getListView(),
-          )
-        ],
-      )
-      
+      body: HomeBody(),
+      // FAB should be added inside the Scaffold 
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          debugPrint('FAB is clicked');
+        },
+        child: Icon(Icons.add),
+        tooltip: 'Add One More Icon',
+      ),
+    );
+  }
+}
+
+void showSnackBarFromListView(BuildContext context, int index) {
+  var snackbar = SnackBar(
+    content: Text("This is the snack bar from index $index"),
+    action: SnackBarAction(
+      label: "UNDO",
+      onPressed: () {
+        debugPrint("Perform UNDO operation");
+      },
+    ),
+  );
+  Scaffold.of(context).showSnackBar(snackbar);
+}
+
+class HomeBody extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        FoodImageAsset(),
+        Text(
+          "This is the image of the food",
+          style: TextStyle(fontSize: 30.0),
+        ),
+        FoodBookButton(),
+        Expanded(
+          child: getListView(),
+        )
+      ],
     );
   }
 }
@@ -28,7 +55,7 @@ class Home extends StatelessWidget {
 //Create a data source for list view
 
 List<String> getListElements() {
-  var items = List<String>.generate(100, (counter)=>"Item $counter");
+  var items = List<String>.generate(10, (counter)=>"Item $counter");
   return items;
 }
 
@@ -42,6 +69,7 @@ Widget getListView() {
         title: Text(listItems[index]),
         onTap: () {
           debugPrint('$index is pressed');
+          showSnackBarFromListView(context, index);
         },
       );
     },
