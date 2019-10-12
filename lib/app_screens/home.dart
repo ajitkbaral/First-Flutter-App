@@ -7,16 +7,78 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Text("Flutter Container"),
       ),
-      body: Container(
-        alignment: Alignment.topRight,
-        color: Colors.purple,
-        child: Text(
-          "This is the text",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 40.0
-          ),
-        ),
+      body: Center(
+        child: Container(
+          padding: EdgeInsets.all(10.0),
+          alignment: Alignment.center,
+          color: Colors.purple,
+          child: Column(
+            children: <Widget>[
+              Row(
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    "Text -1",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 35.0
+                    )
+                  )
+                ),
+                Expanded(
+                  child: Text(
+                    "Text 0",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 35.0
+                    )
+                  )
+                ),                
+              ],
+            ),
+            Row (
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    "Text 1",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 35.0
+                    )
+                  )
+                ),
+                Expanded(
+                  child: Text(
+                    "Text 2",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 35.0
+                    )
+                  )
+                ),
+                Expanded(
+                  child: Text(
+                    "Text 3",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 35.0
+                    )
+                  )
+                ),
+                Expanded(
+                  child: Text(
+                    "Text 4",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 35.0
+                    )
+                  )
+                )
+              ],
+            )
+            ],
+          )
+        )
       )
     );
   }
