@@ -14,12 +14,40 @@ class Home extends StatelessWidget {
             "This is the image of the food",
             style: TextStyle(fontSize: 30.0),
           ),
-          FoodBookButton()
+          FoodBookButton(),
+          Expanded(
+            child: getListView(),
+          )
         ],
       )
       
     );
   }
+}
+
+//Create a data source for list view
+
+List<String> getListElements() {
+  var items = List<String>.generate(100, (counter)=>"Item $counter");
+  return items;
+}
+
+Widget getListView() {
+  var listItems = getListElements();
+
+  var listView = ListView.builder(
+    itemCount: listItems.length,
+    itemBuilder: (context, index) {
+      return ListTile(
+        title: Text(listItems[index]),
+        onTap: () {
+          debugPrint('$index is pressed');
+        },
+      );
+    },
+  );
+
+  return listView;
 }
 
 class FoodImageAsset extends StatelessWidget {
