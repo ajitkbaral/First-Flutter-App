@@ -13,7 +13,8 @@ class Home extends StatelessWidget {
           Text(
             "This is the image of the food",
             style: TextStyle(fontSize: 30.0),
-          )
+          ),
+          FoodBookButton()
         ],
       )
       
@@ -31,5 +32,42 @@ class FoodImageAsset extends StatelessWidget {
       child: image,
     );
   }
-  
 }
+
+class FoodBookButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 250.0,
+      height: 50.0,
+      margin: EdgeInsets.all(30.0),
+      child: RaisedButton(
+        color: Colors.black,
+        child: Text(
+          "Book Food",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20.0
+          ),
+        ),
+        elevation: 6.0,
+        onPressed: () => bookFood(context),
+      ),
+    );
+  }
+
+  void bookFood(BuildContext context) {
+    var alertDialog = AlertDialog(
+      title: Text("Book a food"),
+      content: Text("Have a happy meal"),
+      );
+    
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => alertDialog
+    );
+
+  }
+    
+}
+  
